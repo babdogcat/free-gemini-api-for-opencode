@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: free-gemini-api
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: free-gemini-api/go.mod
+          check-latest: true
+
+      - name: Build
+        run: go build ./...
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Test
+        run: go test ./...
+
+      - name: Smoke test (server starts and answers /health)
+        run: |
+          go build -o /tmp/goapi .
+          (/tmp/goapi &) ; sleep 6
+          curl -fsS http://127.0.0.1:8001/health
+          echo
+          ss -ltn | grep -E ':(8001|9226)' || true
+          # the API must not be reachable from anything but loopback
+          ! ss -ltn | grep -E '0\.0\.0\.0:(8001|9226)'
