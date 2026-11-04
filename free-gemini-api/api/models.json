@@ -1,0 +1,16 @@
+[
+  {
+    "id": "gemini-test-experimental-ultra",
+    "display_name": "Gemini Ultra Experimental",
+    "mode_id": "9988aabbccddeeff",
+    "header_template": "",
+    "min_tier": "subscription",
+    "capabilities": [
+      "chat",
+      "code",
+      "ultra_reasoning"
+    ],
+    "is_default": false,
+    "source": "custom"
+  }
+]

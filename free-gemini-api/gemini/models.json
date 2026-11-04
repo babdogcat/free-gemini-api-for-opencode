@@ -1,0 +1,14 @@
+[
+  {
+    "id": "gemini-test-custom",
+    "display_name": "Gemini Custom Model",
+    "mode_id": "12345678abcdef",
+    "header_template": "",
+    "min_tier": "",
+    "aliases": [
+      "custom-test"
+    ],
+    "is_default": false,
+    "source": "custom"
+  }
+]

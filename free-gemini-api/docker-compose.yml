@@ -1,0 +1,18 @@
+services:
+  gemini-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: free-gemini-api
+    restart: unless-stopped
+    # Publish to the host loopback ONLY. Publishing "8001:8001" exposed an
+    # unauthenticated API and the cookie bridge to every device on the LAN.
+    ports:
+      - "127.0.0.1:8001:8001"
+      - "127.0.0.1:9226:9226"
+    environment:
+      - TZ=Asia/Bangkok
+      # Inside the container the processes must bind 0.0.0.0, but the host port
+      # mapping above keeps them reachable from 127.0.0.1 only.
+      - BIND_ADDR=0.0.0.0
+      - WS_BIND_ADDR=0.0.0.0
