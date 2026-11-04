@@ -7,6 +7,7 @@ An OpenAI-compatible HTTP server that talks to the Google Gemini **web** backend
   <img alt="OpenAI compatible" src="https://img.shields.io/badge/API-OpenAI%20compatible-FF6F00">
   <img alt="Local only" src="https://img.shields.io/badge/network-loopback%20only-success">
   <img alt="Version" src="https://img.shields.io/badge/build-3.4.1--hardened-blue">
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-green">
 </p>
 
 > ### ⚠️ Read before you run this
@@ -423,9 +424,10 @@ Before publishing, decide two things:
 ├── README.md
 ├── SECURITY.md                  threat model + full hardening notes
 ├── CHANGELOG.md
+├── LICENSE                      MIT License
 ├── .github/workflows/
-│   ├── ci.yml                   build / vet / test
-│   └── docker-publish.yml       GHCR image on main (upstream workflow — delete it if you do not want it)
+│   ├── ci.yml                   build / vet / tests
+│   └── docker-publish.yml       GHCR image on main
 ├── free-gemini-api/             Go server (module `goapi`)
 │   ├── main.go
 │   ├── api/                     HTTP handlers, OpenAI adapter, MCP, queue
@@ -443,10 +445,32 @@ Before publishing, decide two things:
 * Original project: [`kodelyx/free-gemini-api`](https://github.com/kodelyx/free-gemini-api) — architecture, JSPB client, arranger engine, model registry.
 * This fork: security hardening, loopback defaults, streaming and tool-call fixes, English documentation.
 
-**License:** the upstream repository ships **no license file**, which by default means "all rights reserved" — a fork of it cannot be re-licensed by the forker. If you intend to publish this publicly:
+**License:**
 
-1. Ask the upstream author for permission / a license, or
-2. publish it as a *private* repository, or
-3. publish only your own patch on top of a clearly-attributed upstream clone.
+This project is licensed under the terms of the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+```text
+MIT License
+
+Copyright (c) 2026
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 Nothing in this repository grants any rights to Google's services, and using it may breach Google's Terms of Service. Use at your own risk.
